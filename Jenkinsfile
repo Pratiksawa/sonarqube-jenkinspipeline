@@ -3,14 +3,14 @@ node {
     git 'https://github.com/shazforiot/GOL.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'sonarqube';
-    withSonarQubeEnv('sonarqube') {
+    def scannerHome = tool 'Sonar Scanner';
+    withSonarQubeEnv('SonarQube') {
       sh "${scannerHome}/bin/sonar-scanner \
       -D sonar.login=admin \
-      -D sonar.password=admin \
+      -D sonar.password=pratik \
       -D sonar.projectKey=sonarqubetest \
       -D sonar.exclusions=vendor/**,resources/**,**/*.java \
-      -D sonar.host.url=http://192.168.1XX.XX:9000/"
+      -D sonar.host.url=http://172.19.0.1:9000/"
     }
   }
 }
